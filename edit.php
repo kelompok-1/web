@@ -10,7 +10,7 @@ $userFullName = $_POST['txt_nama'];
  
 // update data ke database
 mysqli_query($koneksi,"UPDATE user_detail SET username='$userName', user_password='$userPass', user_fullname='$userFullName' where id='$id'");
-header("location:sb-admin-2/tables.php");
+header("location:admin/tables.php");
 } 
 
 ?>

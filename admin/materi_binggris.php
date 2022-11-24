@@ -9,11 +9,6 @@ if(!isset($_SESSION['id'])){
 $sesID = $_SESSION['id'];
 $sesName = $_SESSION['name'];
 $sesLvl = $_SESSION['level'];
-// mengambil data user
-$data_user = mysqli_query($koneksi,"SELECT * FROM user_detail WHERE level='2'");
- 
-// menghitung data user
-$jumlah_user = mysqli_num_rows($data_user);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -26,7 +21,7 @@ $jumlah_user = mysqli_num_rows($data_user);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Skoolen | Dashboard</title>
+    <title>Skoolen | Data User</title>
     <link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
 
     <!-- Custom fonts for this template-->
@@ -60,7 +55,7 @@ $jumlah_user = mysqli_num_rows($data_user);
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="home.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -75,7 +70,7 @@ $jumlah_user = mysqli_num_rows($data_user);
                 <a class="nav-link" href="tables.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data User</span></a>
-            </li>
+                    </li>
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
@@ -200,93 +195,47 @@ $jumlah_user = mysqli_num_rows($data_user);
                 </nav>
                 <!-- End of Topbar -->
 
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Jumlah User</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_user; ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-user fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Data User</h6>
                         </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Jumlah Materi</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">-</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Jumlah Video</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">-</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-video fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Jumlah Soal</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">-</div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-clipboard fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama File</th>
+                                            <th>Kelas</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                        <th>No</th>
+                                            <th>Nama File</th>
+                                            <th>Kelas</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                        <td>-</td>
+                                            <td>-</td>
+                                            <td>-</td>
+                                            <td>
+                                                <a href="../edit.php?id=<?php echo $row['id']; ?>"><input class="btn btn-success btn-xs"  type="button" value="Edit"></a>
+                                                <a href="../delete.php?id=<?php echo $row['id']; ?>"><input class="btn btn-danger btn-xs"  type="button" value="Delete"></a>
+                                            </td> 
+                                        </tr>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                     </div>
-                    </div>
-                    </div>
-                </div>
-                <!-- /.container-fluid -->
+            </div>
+            </div>	
             </div>
             <!-- End of Main Content -->
             <!-- Footer -->

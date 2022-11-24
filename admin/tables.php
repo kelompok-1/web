@@ -81,7 +81,7 @@ $sesLvl = $_SESSION['level'];
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Mata Pelajaran</h6>
-                        <a class="collapse-item" href="#">Bahasa Inggris</a>
+                        <a class="collapse-item" href="materi_binggris.php">Bahasa Inggris</a>
                         <a class="collapse-item" href="#">Matematika</a>
                     </div>
                 </div>
