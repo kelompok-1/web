@@ -87,7 +87,7 @@ $jumlah_user = mysqli_num_rows($data_user);
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Mata Pelajaran</h6>
                         <a class="collapse-item" href="materi_binggris.php">Bahasa Inggris</a>
-                        <a class="collapse-item" href="#">Matematika</a>
+                        <a class="collapse-item" href="materi_matematika.php">Matematika</a>
                     </div>
                 </div>
             </li>

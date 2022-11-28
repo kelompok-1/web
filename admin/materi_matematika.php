@@ -196,7 +196,7 @@ $sesLvl = $_SESSION['level'];
                 <!-- End of Topbar -->
                 <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Input Materi Bahasa Inggris</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Input Materi Matematika</h6>
                         </div>
                         <div class="card-body">
                         <div class="mb-3">
@@ -215,7 +215,7 @@ $sesLvl = $_SESSION['level'];
                 <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Materi Bahasa Inggris</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Materi Matematika</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
