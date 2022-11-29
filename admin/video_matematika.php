@@ -98,7 +98,7 @@ $sesLvl = $_SESSION['level'];
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Mata Pelajaran</h6>
                         <a class="collapse-item" href="video_binggris.php">Bahasa Inggris</a>
-                        <a class="collapse-item" href="video_matematika.php">Matematika</a>
+                        <a class="collapse-item" href="video_matematika.php">Matematika</a>>
                     </div>
                 </div>
             </li>
@@ -196,7 +196,7 @@ $sesLvl = $_SESSION['level'];
                 <!-- End of Topbar -->
                 <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Input Materi Matematika</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Input Video Matematika</h6>
                         </div>
                         <div class="card-body">
                         <div class="mb-3">
@@ -215,7 +215,7 @@ $sesLvl = $_SESSION['level'];
                 <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Materi Matematika</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Video Matematika</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">

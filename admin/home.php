@@ -102,8 +102,8 @@ $jumlah_user = mysqli_num_rows($data_user);
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Mata Pelajaran</h6>
-                        <a class="collapse-item" href="#">Bahasa Inggris</a>
-                        <a class="collapse-item" href="#">Matematika</a>
+                        <a class="collapse-item" href="video_binggris.php">Bahasa Inggris</a>
+                        <a class="collapse-item" href="video_matematika.php">Matematika</a>
                     </div>
                 </div>
             </li>
