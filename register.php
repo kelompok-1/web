@@ -3,9 +3,9 @@
 	if (isset($_POST['register'])) {
 		$userName = $_POST['txt_username'];
 		$userPass = $_POST['txt_pass'];
-		$userFullName = $_POST['txt_nama'];
+		$userEmail = $_POST['txt_email'];
 
-		$query = "INSERT INTO user_detail VALUES ('', '$userName', '$userPass', '$userFullName', 2)";
+		$query = "INSERT INTO pengguna VALUES ('$userName', '$userEmail', '$userPass', '2')";
 		$result = mysqli_query($koneksi, $query);
 		header('location:login.php');
 	}
@@ -55,14 +55,14 @@
     				<div id="username" class="form-text"></div>
   					</div>
 					<div class="mb-3">
-    				<label for="password" class="form-label">Password</label>
-    				<input type="password" class="form-control" id="password" aria-describedby="password" name="txt_pass">
-    				<div id="password" class="form-text"></div>
+    				<label for="nama" class="form-label">Email</label>
+    				<input type="email" class="form-control" id="email" aria-describedby="nama" name="txt_email">
+    				<div id="email" class="form-text"></div>
   					</div>
 					<div class="mb-3">
-    				<label for="nama" class="form-label">Nama Panjang</label>
-    				<input type="nama" class="form-control" id="nama" aria-describedby="nama" name="txt_nama">
-    				<div id="nama" class="form-text"></div>
+    				<label for="password" class="form-label">Password</label>
+    				<input type="password" class="form-control" pattern=".{6,}" id="password" aria-describedby="password" name="txt_pass">
+    				<div id="password" class="form-text"></div>
   					</div>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit" name="register">

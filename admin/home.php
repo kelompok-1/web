@@ -2,18 +2,19 @@
 require ("../koneksi.php");
 // error_reporting(0);
 session_start();
-if(!isset($_SESSION['id'])){
+if(!isset($_SESSION['username'])){
     $_SESSION['msg'] = 'anda harus log in  untuk mengakses halaman ini';
     header('Location:../login.php');
 }
-$sesID = $_SESSION['id'];
-$sesName = $_SESSION['name'];
-$sesLvl = $_SESSION['level'];
+$sesName = $_SESSION['username'];
 // mengambil data user
-$data_user = mysqli_query($koneksi,"SELECT * FROM user_detail WHERE level='2'");
- 
+$data_user = mysqli_query($koneksi,"SELECT * FROM pengguna WHERE level='2'");
+// mengambil data buku
+$data_buku = mysqli_query($koneksi,"SELECT * FROM buku");
 // menghitung data user
 $jumlah_user = mysqli_num_rows($data_user);
+//menghitung data buku
+$jumlah_buku = mysqli_num_rows($data_buku);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -76,20 +77,11 @@ $jumlah_user = mysqli_num_rows($data_user);
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data User</span></a>
             </li>
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Materi</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Mata Pelajaran</h6>
-                        <a class="collapse-item" href="materi_binggris.php">Bahasa Inggris</a>
-                        <a class="collapse-item" href="materi_matematika.php">Matematika</a>
-                    </div>
-                </div>
+                <a class="nav-link" href="book_tables.php">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Data Buku</span></a>
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
@@ -101,25 +93,8 @@ $jumlah_user = mysqli_num_rows($data_user);
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Mata Pelajaran</h6>
-                        <a class="collapse-item" href="video_binggris.php">Bahasa Inggris</a>
-                        <a class="collapse-item" href="video_matematika.php">Matematika</a>
-                    </div>
-                </div>
-            </li>
-            
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Soal</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Mata Pelajaran</h6>
-                        <a class="collapse-item" href="#">Bahasa Inggris</a>
-                        <a class="collapse-item" href="#">Matematika</a>
+                        <a class="collapse-item" href="video_binggris.php">Kategori</a>
+                        <a class="collapse-item" href="video_matematika.php">Data Video</a>
                     </div>
                 </div>
             </li>
@@ -236,11 +211,11 @@ $jumlah_user = mysqli_num_rows($data_user);
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Jumlah Materi</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">-</div>
+                                                Jumlah Buku</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_buku; ?></div>
                                         </div>
                                         <div class="col-auto">
-                                            <i class="fas fa-clipboard fa-2x text-gray-300"></i>
+                                            <i class="fas fa-book fa-2x text-gray-300"></i>
                                         </div>
                                     </div>
                                 </div>

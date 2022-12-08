@@ -7,31 +7,27 @@ if(isset($_POST['submit'])){
     $pass = $_POST['txt_pass'];
 
     if(!empty(trim($user)) && !empty(trim($pass))){
-        $query = "SELECT * FROM user_detail WHERE username='$user'";
+        $query = "SELECT * FROM pengguna WHERE username='$user'";
         $result = mysqli_query($koneksi,$query);
         $num = mysqli_num_rows($result);
 
         while ($row = mysqli_fetch_array($result)){
-            $id = $row['id'];
-            $userVal = $row['user_username'];
-            $passVal =$row['user_password'];
-            $username = $row['user_fullname'];
-            $lvl = $row['level'];
+            $userVal = $row['username'];
+			$emailVal = $row['email'];
+            $passVal = $row['password'];
         }
 
         if($num != 0){
-            if($userVal==$email && $passVal==$pass){
+            if($userVal==$user && $passVal==$pass){
                 // header('Location: dashboard.php?user_fullname='.urlencode($username));
-                $_SESSION['id'] = $id;
-                $_SESSION['name'] = $username;
-                $_SESSION['level'] = $lvl;
+                $_SESSION['username'] = $userVal;
                 header('Location:admin/home.php');
             }else{
-                $error = 'user atau password salah!!';
+                setcookie("message","Maaf, Email Atau Password Salah",time()+1);
                 header('Location:login.php');
             }
         }else{
-            $error = 'user tidak ditemukan!!';
+            setcookie("message","22222222222222",time()+1);
             header('Location:login.php');
         }
     }else{
@@ -80,6 +76,9 @@ if(isset($_POST['submit'])){
 					<span class="login100-form-title p-b-43">
 						Masuk untuk Melanjutkan
 					</span>
+					<?php  if (isset($_COOKIE["message"])) {
+                      echo $_COOKIE["message"];
+                    }?>
 					<div class="mb-3">
     				<label for="username" class="form-label">Username</label>
     				<input type="text" class="form-control" id="username" aria-describedby="username" name="txt_username">

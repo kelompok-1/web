@@ -2,13 +2,11 @@
 require ("../koneksi.php");
 // error_reporting(0);
 session_start();
-if(!isset($_SESSION['id'])){
+if(!isset($_SESSION['username'])){
     $_SESSION['msg'] = 'anda harus log in  untuk mengakses halaman ini';
     header('Location:../login.php');
 }
-$sesID = $_SESSION['id'];
-$sesName = $_SESSION['name'];
-$sesLvl = $_SESSION['level'];
+$sesName = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -66,28 +64,18 @@ $sesLvl = $_SESSION['level'];
                 Menu
             </div>
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="tables.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data User</span></a>
                     </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Materi</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Mata Pelajaran</h6>
-                        <a class="collapse-item" href="materi_binggris.php">Bahasa Inggris</a>
-                        <a class="collapse-item" href="materi_matematika.php">Matematika</a>
-                    </div>
-                </div>
+                    <li class="nav-item">
+                <a class="nav-link" href="book_tables.php">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Data Buku</span></a>
             </li>
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
+                        <!-- Nav Item - Utilities Collapse Menu -->
+                        <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
                     aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-video"></i>
@@ -96,25 +84,8 @@ $sesLvl = $_SESSION['level'];
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Mata Pelajaran</h6>
-                        <a class="collapse-item" href="video_binggris.php">Bahasa Inggris</a>
-                        <a class="collapse-item" href="video_matematika.php">Matematika</a>
-                    </div>
-                </div>
-            </li>
-            
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Soal</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Mata Pelajaran</h6>
-                        <a class="collapse-item" href="#">Bahasa Inggris</a>
-                        <a class="collapse-item" href="#">Matematika</a>
+                        <a class="collapse-item" href="video_binggris.php">Kategori</a>
+                        <a class="collapse-item" href="video_matematika.php">Data Video</a>
                     </div>
                 </div>
             </li>
@@ -194,7 +165,30 @@ $sesLvl = $_SESSION['level'];
 
                 </nav>
                 <!-- End of Topbar -->
-
+                <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Input User</h6>
+                        </div>
+                        <div class="card-body">
+                            <form action="proses_input_user.php" method="POST">
+                        <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input class="form-control" type="text" name="txt_username">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input class="form-control" type="email" name="txt_email">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Password</label>
+                        <input class="form-control" pattern=".{6,}" type="password" name="txt_pass">
+                        </div>
+                        <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3" name="input">Tambah</button>
+                        </div>
+                        </form>
+                        </div>
+                    </div>
                 <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -215,30 +209,30 @@ $sesLvl = $_SESSION['level'];
                                     <tfoot>
                                         <tr>
                                         <th>No</th>
-                                            <th>Nama</th>
                                             <th>Username</th>
+                                            <th>Email</th>
                                             <th>Password</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
                                     <?php 
-                                    $query = "SELECT * FROM user_detail WHERE level='2'";
+                                    $query = "SELECT * FROM pengguna WHERE level='2'";
                                     $result = mysqli_query($koneksi,$query);
                                     $no = 1;
                                     while($row = $row = mysqli_fetch_array($result)){
-                                    $userFullName = $row['user_fullname'];
                                     $userName = $row['username'];
-                                    $password = $row['user_password'];
+                                    $userEmail = $row['email'];
+                                    $password = $row['password'];
                                     ?>
                                     <tbody>
                                         <tr>
                                         <td><?php echo $no; ?></td>
                                             <td><?php echo $userName; ?></td>
-                                            <td><?php echo $userFullName; ?></td>
+                                            <td><?php echo $userEmail; ?></td>
                                             <td><?php echo $password; ?></td>
                                             <td>
-                                                <a href="../edit.php?id=<?php echo $row['id']; ?>"><input class="btn btn-success btn-xs"  type="button" value="Edit"></a>
-                                                <a href="../delete.php?id=<?php echo $row['id']; ?>"><input class="btn btn-danger btn-xs"  type="button" value="Delete"></a>
+                                                <a href="../edit.php?username=<?=$row['username']; ?>"><input class="btn btn-success btn-xs"  type="button" value="Edit"></a>
+                                                <a href="../delete.php?username=<?=$row['username']; ?>"><input class="btn btn-danger btn-xs"  type="button" value="Delete"></a>
                                             </td> 
                                         </tr>
                                     </tbody>

@@ -2,13 +2,11 @@
 require ("../koneksi.php");
 // error_reporting(0);
 session_start();
-if(!isset($_SESSION['id'])){
+if(!isset($_SESSION['username'])){
     $_SESSION['msg'] = 'anda harus log in  untuk mengakses halaman ini';
     header('Location:../login.php');
 }
-$sesID = $_SESSION['id'];
-$sesName = $_SESSION['name'];
-$sesLvl = $_SESSION['level'];
+$sesName = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +19,7 @@ $sesLvl = $_SESSION['level'];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Skoolen | Data User</title>
+    <title>Skoolen | Data Buku</title>
     <link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
 
     <!-- Custom fonts for this template-->
@@ -71,20 +69,10 @@ $sesLvl = $_SESSION['level'];
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data User</span></a>
                     </li>
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Materi</span>
-                </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Mata Pelajaran</h6>
-                        <a class="collapse-item" href="materi_binggris.php">Bahasa Inggris</a>
-                        <a class="collapse-item" href="materi_matematika.php">Matematika</a>
-                    </div>
-                </div>
+                    <li class="nav-item active">
+                <a class="nav-link" href="book_tables.php">
+                    <i class="fas fa-fw fa-book"></i>
+                    <span>Data Buku</span></a>
             </li>
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
@@ -96,25 +84,8 @@ $sesLvl = $_SESSION['level'];
                 <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Mata Pelajaran</h6>
-                        <a class="collapse-item" href="video_binggris.php">Bahasa Inggris</a>
-                        <a class="collapse-item" href="video_matematika.php">Matematika</a>
-                    </div>
-                </div>
-            </li>
-            
-            <!-- Nav Item - Pages Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Soal</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Mata Pelajaran</h6>
-                        <a class="collapse-item" href="#">Bahasa Inggris</a>
-                        <a class="collapse-item" href="#">Matematika</a>
+                        <a class="collapse-item" href="video_binggris.php">Kategori</a>
+                        <a class="collapse-item" href="video_matematika.php">Data Video</a>
                     </div>
                 </div>
             </li>
@@ -196,26 +167,48 @@ $sesLvl = $_SESSION['level'];
                 <!-- End of Topbar -->
                 <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Input Materi Matematika</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Input Buku</h6>
                         </div>
                         <div class="card-body">
+                            <form action="proses_input_buku.php" method="POST">
                         <div class="mb-3">
-                        <input class="form-control" type="file" id="formFile">
+                        <label class="form-label">Kode Buku</label>
+                        <input class="form-control" type="text" name="kode_buku">
                         </div>
                         <div class="mb-3">
-                        <label class="form-label">Kelas</label>
-                        <input class="form-control" type="text" placeholder="Kelas">
+                        <label class="form-label">Nama Buku</label>
+                        <input class="form-control" type="text" name="nama_buku">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Nama Penulis</label>
+                        <input class="form-control" type="text" name="nama_penulis">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Deskrispi Buku</label>
+                        <input class="form-control" type="text" name="deskripsi_buku">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Jumlah Halaman</label>
+                        <input class="form-control" type="text" name="jumlah_halaman">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Gambar</label>
+                        <input class="form-control" type="text" name="gambar">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Link PDF</label>
+                        <input class="form-control" type="text" name="link_pdf">
                         </div>
                         <div class="col-auto">
-                        <button type="submit" class="btn btn-primary mb-3">Submit</button>
+                        <button type="submit" class="btn btn-primary mb-3" name="input">Tambah</button>
                         </div>
+                        </form>
                         </div>
                     </div>
-
                 <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Materi Matematika</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data User</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -223,30 +216,62 @@ $sesLvl = $_SESSION['level'];
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama File</th>
-                                            <th>Kelas</th>
+                                            <th>Kode Buku</th>
+                                            <th>Nama Buku</th>
+                                            <th>Nama Penulis</th>
+                                            <th>Deskipsi</th>
+                                            <th>Jumlah Hal</th>
+                                            <th>Gambar</th>
+                                            <th>Link</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                        <th>No</th>
-                                            <th>Nama File</th>
-                                            <th>Kelas</th>
+                                            <th>No</th>
+                                            <th>Kode Buku</th>
+                                            <th>Nama Buku</th>
+                                            <th>Nama Penulis</th>
+                                            <th>Deskipsi</th>
+                                            <th>Jumlah Hal</th>
+                                            <th>Gambar</th>
+                                            <th>Link</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </tfoot>
+                                    <?php 
+                                    $query = "SELECT * FROM buku";
+                                    $result = mysqli_query($koneksi,$query);
+                                    $no = 1;
+                                    while($row = $row = mysqli_fetch_array($result)){
+                                    $kodeBuku = $row['kode_buku'];
+                                    $namaBuku = $row['nama_buku'];
+                                    $namaPen = $row['nama_penulis'];
+                                    $desK = $row['deskripsi_buku'];
+                                    $jumHal = $row['jumlah_halaman'];
+                                    $gaM = $row['gambar'];
+                                    $linkPdf = $row['link_pdf'];
+                                    ?>
                                     <tbody>
                                         <tr>
-                                        <td>-</td>
-                                            <td>-</td>
-                                            <td>-</td>
+                                        <td><?php echo $no; ?></td>
+                                            <td><?php echo $kodeBuku; ?></td>
+                                            <td><?php echo $namaBuku; ?></td>
+                                            <td><?php echo $namaPen; ?></td>
+                                            <td><?php echo $desK; ?></td>
+                                            <td><?php echo $jumHal; ?></td>
+                                            <td><?php echo $gaM; ?></td>
+                                            <td><?php echo $linkPdf; ?></td>
                                             <td>
-                                                <a href="../edit.php?id=<?php echo $row['id']; ?>"><input class="btn btn-success btn-xs"  type="button" value="Edit"></a>
-                                                <a href="../delete.php?id=<?php echo $row['id']; ?>"><input class="btn btn-danger btn-xs"  type="button" value="Delete"></a>
+                                                <a href="../edit.php?kode_buku=<?=$row['kode_buku']; ?>"><input class="btn btn-success btn-xs"  type="button" value="Edit"></a>
+                                                <a href="../delete_book.php?kode_buku=<?=$row['kode_buku']; ?>"><input class="btn btn-danger btn-xs"  type="button" value="Delete"></a>
                                             </td> 
                                         </tr>
                                     </tbody>
+                                    <?php
+                                    $no++;
+                                    }
+                                    ?>
                                 </table>
                             </div>
                         </div>

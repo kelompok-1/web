@@ -1,15 +1,14 @@
 <?php 
 // koneksi database
 include 'koneksi.php';
-if (isset($_POST['update'])) {
+if (isset($_POST["update"])) {
 
-$id = $_POST['id'];
 $userName = $_POST['txt_username'];
 $userPass = $_POST['txt_pass'];
-$userFullName = $_POST['txt_nama'];
+$userEmail = $_POST['txt_email'];
  
 // update data ke database
-mysqli_query($koneksi,"UPDATE user_detail SET username='$userName', user_password='$userPass', user_fullname='$userFullName' where id='$id'");
+mysqli_query($koneksi, "UPDATE pengguna SET username='$userName', email='$userEmail' , password='$userPass' , level='2' WHERE username='$userName'");
 header("location:admin/tables.php");
 } 
 
@@ -17,7 +16,7 @@ header("location:admin/tables.php");
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Skoolen | Register</title>
+	<title>Skoolen | Edit</title>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->	
@@ -50,8 +49,8 @@ header("location:admin/tables.php");
 			<div class="wrap-login100">
                 <?php
                     include 'koneksi.php';
-	                $id = $_GET['id'];
-	                $data = mysqli_query($koneksi,"SELECT * FROM user_detail WHERE id='$id'");
+					$user = $_GET['username'];
+	                $data = mysqli_query($koneksi,"SELECT * FROM pengguna WHERE username='$user'");
 	                while($row = mysqli_fetch_array($data)){
 		            ?>
 				<form class="login100-form validate-form" action="edit.php" method="POST">
@@ -60,19 +59,18 @@ header("location:admin/tables.php");
 					</span>
 					<div class="mb-3">
     				<label for="username" class="form-label">Username</label>
-                    <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
     				<input type="text" class="form-control" id="username" aria-describedby="username" name="txt_username" value="<?php echo $row['username']; ?>">
     				<div id="username" class="form-text"></div>
   					</div>
 					<div class="mb-3">
-    				<label for="password" class="form-label">Password</label>
-    				<input type="password" class="form-control" id="password" aria-describedby="password" name="txt_pass" value="<?php echo $row['user_password']; ?>">
-    				<div id="password" class="form-text"></div>
+    				<label for="nama" class="form-label">Nama</label>
+    				<input type="nama" class="form-control" id="email" aria-describedby="nama" name="txt_email" value="<?php echo $row['email']; ?>">
+    				<div id="nama" class="form-text"></div>
   					</div>
 					<div class="mb-3">
-    				<label for="nama" class="form-label">Nama</label>
-    				<input type="nama" class="form-control" id="nama" aria-describedby="nama" name="txt_nama" value="<?php echo $row['user_fullname']; ?>">
-    				<div id="nama" class="form-text"></div>
+    				<label for="password" class="form-label">Password</label>
+    				<input type="password" class="form-control" id="password" aria-describedby="password" name="txt_pass" value="<?php echo $row['password']; ?>">
+    				<div id="password" class="form-text"></div>
   					</div>
 					<div class="container-login100-form-btn">
 						<button class="login100-form-btn" type="submit" name="update">
@@ -84,7 +82,7 @@ header("location:admin/tables.php");
                 }
                 ?>
 				<div class="login100-more" style="background-image: url('images/1.png');">
-				<a href="sb-admin-2/tables.php" class="btn btn-dark py-md-2 px-md-4">←</a>
+				<a href="admin/tables.php" class="btn btn-dark py-md-2 px-md-4">←</a>
 				</div>
 			</div>
 		</div>
