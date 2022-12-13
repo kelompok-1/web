@@ -23,11 +23,11 @@ if(isset($_POST['submit'])){
                 $_SESSION['username'] = $userVal;
                 header('Location:admin/home.php');
             }else{
-                setcookie("message","Maaf, Email Atau Password Salah",time()+1);
+                setcookie("message","Maaf, Username Atau Password Salah",time()+1);
                 header('Location:login.php');
             }
         }else{
-            setcookie("message","22222222222222",time()+1);
+            setcookie("message","Akun Belum Terdaftar",time()+1);
             header('Location:login.php');
         }
     }else{
@@ -94,12 +94,6 @@ if(isset($_POST['submit'])){
 						<button class="login100-form-btn" type="submit" name="submit">
 							LOGIN
 						</button>
-					</div>
-
-					<div class="text-center w-full p-t-3 p-b-32">
-						<a href="register.php">
-							Belum punya akun? Daftar
-						</a>
 					</div>
 				</form>
 				<div class="login100-more" style="background-image: url('images/1.png');">

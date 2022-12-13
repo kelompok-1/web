@@ -240,7 +240,7 @@ $jumlah_buku = mysqli_num_rows($data_buku);
                             </div>
                         </div>
 
-                        <!-- Pending Requests Card Example -->
+                        <!-- Pending Requests Card Example
                         <div class="col-xl-3 col-md-6 mb-4">
                             <div class="card border-left-warning shadow h-100 py-2">
                                 <div class="card-body">
@@ -256,7 +256,7 @@ $jumlah_buku = mysqli_num_rows($data_buku);
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                     </div>
                     </div>

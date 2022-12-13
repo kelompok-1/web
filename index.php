@@ -69,7 +69,6 @@
                                 <h1 class="display-3 animated slideInDown mb-4 skoolen-mid">Skoolen</h1>
                                 <p class="fs-5 text-white mb-4 pb-2"></p>
                                 <a href="login.php" class="btn btn-dark rounded-pill py-md-3 px-md-4 animated slideInLeft">Login</a>
-                                <a href="register.php" class="btn btn-dark rounded-pill py-md-3 px-md-4 animated slideInRight">Register</a>
                             </div>
                         </div>
                     </div>

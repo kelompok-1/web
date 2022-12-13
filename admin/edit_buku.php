@@ -6,6 +6,21 @@ if(!isset($_SESSION['username'])){
     $_SESSION['msg'] = 'anda harus log in  untuk mengakses halaman ini';
     header('Location:../login.php');
 }
+if (isset($_POST["update"])) {
+
+    $kodeBuku = $_POST['kode_buku'];
+    $namaBuku = $_POST['nama_buku'];
+    $namaPen = $_POST['nama_penulis'];
+    $desK = $_POST['deskripsi_buku'];
+    $jumHal = $_POST['jumlah_halaman'];
+    $gaM = $_POST['gambar'];
+    $linkPdf = $_POST['link_pdf'];
+    
+    // update data ke database
+    mysqli_query($koneksi, "UPDATE buku SET kode_buku='$kodeBuku', nama_buku='$namaBuku' , nama_penulis='$namaPen' , deskripsi_buku='$desK' , 
+    jumlah_halaman='$jumHal' , gambar='$gaM' , link_pdf='$linkPdf' WHERE kode_buku='$kodeBuku'");
+    header("location:book_tables.php");
+    } 
 $sesName = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
@@ -165,77 +180,56 @@ $sesName = $_SESSION['username'];
 
                 </nav>
                 <div class="col-auto">
-                        <a href="tambah_buku.php"><button type="submit" class="btn btn-primary mb-3">Tambah</button></a>
+                        <a href="book_tables.php"><button type="submit" class="btn btn-danger mb-3">Tambah</button></a>
                 </div>
-                <!-- DataTales Example -->
-                    <div class="card shadow mb-4">
+                <!-- End of Topbar -->
+                <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Buku</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Input Buku</h6>
                         </div>
                         <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Kode Buku</th>
-                                            <th>Nama Buku</th>
-                                            <th>Nama Penulis</th>
-                                            <th>Deskipsi</th>
-                                            <th>Jumlah Hal</th>
-                                            <th>Gambar</th>
-                                            <th>Link</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tfoot>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Kode Buku</th>
-                                            <th>Nama Buku</th>
-                                            <th>Nama Penulis</th>
-                                            <th>Deskipsi</th>
-                                            <th>Jumlah Hal</th>
-                                            <th>Gambar</th>
-                                            <th>Link</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </tfoot>
-                                    <?php 
-                                    $query = "SELECT * FROM buku";
-                                    $result = mysqli_query($koneksi,$query);
-                                    $no = 1;
-                                    while($row = $row = mysqli_fetch_array($result)){
-                                    $kodeBuku = $row['kode_buku'];
-                                    $namaBuku = $row['nama_buku'];
-                                    $namaPen = $row['nama_penulis'];
-                                    $desK = $row['deskripsi_buku'];
-                                    $jumHal = $row['jumlah_halaman'];
-                                    $gaM = $row['gambar'];
-                                    $linkPdf = $row['link_pdf'];
-                                    ?>
-                                    <tbody>
-                                        <tr>
-                                        <td><?php echo $no; ?></td>
-                                            <td><?php echo $kodeBuku; ?></td>
-                                            <td><?php echo $namaBuku; ?></td>
-                                            <td><?php echo $namaPen; ?></td>
-                                            <td><?php echo $desK; ?></td>
-                                            <td><?php echo $jumHal; ?></td>
-                                            <td><?php echo $gaM; ?></td>
-                                            <td><?php echo $linkPdf; ?></td>
-                                            <td>
-                                                <a href="edit_buku.php?kode_buku=<?=$row['kode_buku']; ?>"><input class="btn btn-success btn-xs"  type="button" value="Edit"></a>
-                                                <a href="../delete_book.php?kode_buku=<?=$row['kode_buku']; ?>"><input class="btn btn-danger btn-xs"  type="button" value="Delete"></a>
-                                            </td> 
-                                        </tr>
-                                    </tbody>
-                                    <?php
-                                    $no++;
-                                    }
-                                    ?>
-                                </table>
-                            </div>
+                        <?php
+                        include '../koneksi.php';
+					    $buku = $_GET['kode_buku'];
+	                    $data = mysqli_query($koneksi,"SELECT * FROM buku WHERE kode_buku='$buku'");
+	                    while($row = mysqli_fetch_array($data)){
+		                ?>
+                            <form action="edit_buku.php" method="POST">
+                        <div class="mb-3">
+                        <label class="form-label">Kode Buku</label>
+                        <input class="form-control" type="text" name="kode_buku" value="<?php echo $row['kode_buku']; ?>">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Nama Buku</label>
+                        <input class="form-control" type="text" name="nama_buku" value="<?php echo $row['nama_buku']; ?>">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Nama Penulis</label>
+                        <input class="form-control" type="text" name="nama_penulis" value="<?php echo $row['nama_penulis']; ?>">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Deskripsi Buku</label>
+                        <input class="form-control" type="text" name="deskripsi_buku" value="<?php echo $row['deskripsi_buku']; ?>">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Jumlah Halaman</label>
+                        <input class="form-control" type="text" name="jumlah_halaman" value="<?php echo $row['jumlah_halaman']; ?>">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Gambar</label>
+                        <input class="form-control" type="text" name="gambar" value="<?php echo $row['gambar']; ?>">
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Link PDF</label>
+                        <input class="form-control" type="text" name="link_pdf" value="<?php echo $row['link_pdf']; ?>">
+                        </div>
+                        <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3" name="update">Update</button>
+                        </div>
+                        </form>
+                        <?php
+                        }
+                        ?>
                         </div>
                     </div>
             </div>

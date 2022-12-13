@@ -164,31 +164,9 @@ $sesName = $_SESSION['username'];
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->
-                <div class="card shadow mb-4">
-                        <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Input User</h6>
-                        </div>
-                        <div class="card-body">
-                            <form action="proses_input_user.php" method="POST">
-                        <div class="mb-3">
-                        <label class="form-label">Username</label>
-                        <input class="form-control" type="text" name="txt_username">
-                        </div>
-                        <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input class="form-control" type="email" name="txt_email">
-                        </div>
-                        <div class="mb-3">
-                        <label class="form-label">Password</label>
-                        <input class="form-control" pattern=".{6,}" type="password" name="txt_pass">
-                        </div>
-                        <div class="col-auto">
-                        <button type="submit" class="btn btn-primary mb-3" name="input">Tambah</button>
-                        </div>
-                        </form>
-                        </div>
-                    </div>
+                <div class="col-auto">
+                        <a href="tambah_user.php"><button type="submit" class="btn btn-primary mb-3">Tambah</button></a>
+                </div>
                 <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -200,8 +178,8 @@ $sesName = $_SESSION['username'];
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama</th>
                                             <th>Username</th>
+                                            <th>Email</th>
                                             <th>Password</th>
                                             <th>Aksi</th>
                                         </tr>
@@ -231,7 +209,7 @@ $sesName = $_SESSION['username'];
                                             <td><?php echo $userEmail; ?></td>
                                             <td><?php echo $password; ?></td>
                                             <td>
-                                                <a href="../edit.php?username=<?=$row['username']; ?>"><input class="btn btn-success btn-xs"  type="button" value="Edit"></a>
+                                                <a href="edit_user.php?username=<?=$row['username']; ?>"><input class="btn btn-success btn-xs"  type="button" value="Edit"></a>
                                                 <a href="../delete.php?username=<?=$row['username']; ?>"><input class="btn btn-danger btn-xs"  type="button" value="Delete"></a>
                                             </td> 
                                         </tr>
