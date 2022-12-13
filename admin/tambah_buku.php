@@ -165,7 +165,7 @@ $sesName = $_SESSION['username'];
 
                 </nav>
                 <div class="col-auto">
-                        <a href="book_tables.php"><button type="submit" class="btn btn-danger mb-3">Tambah</button></a>
+                        <a href="book_tables.php"><button type="submit" class="btn btn-danger mb-3">Kembali</button></a>
                 </div>
                 <!-- End of Topbar -->
                 <div class="card shadow mb-4">
@@ -176,31 +176,31 @@ $sesName = $_SESSION['username'];
                             <form action="proses_input_buku.php" method="POST">
                         <div class="mb-3">
                         <label class="form-label">Kode Buku</label>
-                        <input class="form-control" type="text" name="kode_buku">
+                        <input class="form-control" type="text" name="kode_buku" required>
                         </div>
                         <div class="mb-3">
                         <label class="form-label">Nama Buku</label>
-                        <input class="form-control" type="text" name="nama_buku">
+                        <input class="form-control" type="text" name="nama_buku" required>
                         </div>
                         <div class="mb-3">
                         <label class="form-label">Nama Penulis</label>
-                        <input class="form-control" type="text" name="nama_penulis">
+                        <input class="form-control" type="text" name="nama_penulis" required>
                         </div>
                         <div class="mb-3">
                         <label class="form-label">Deskripsi Buku</label>
-                        <input class="form-control" type="text" name="deskripsi_buku">
+                        <input class="form-control" type="text" name="deskripsi_buku" required>
                         </div>
                         <div class="mb-3">
                         <label class="form-label">Jumlah Halaman</label>
-                        <input class="form-control" type="text" name="jumlah_halaman">
+                        <input class="form-control" type="text" name="jumlah_halaman" required>
                         </div>
                         <div class="mb-3">
                         <label class="form-label">Gambar</label>
-                        <input class="form-control" type="text" name="gambar">
+                        <input class="form-control" type="text" name="gambar" required>
                         </div>
                         <div class="mb-3">
                         <label class="form-label">Link PDF</label>
-                        <input class="form-control" type="text" name="link_pdf">
+                        <input class="form-control" type="text" name="link_pdf" required>
                         </div>
                         <div class="col-auto">
                         <button type="submit" class="btn btn-primary mb-3" name="input">Tambah</button>

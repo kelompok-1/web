@@ -180,7 +180,7 @@ $sesName = $_SESSION['username'];
 
                 </nav>
                 <div class="col-auto">
-                        <a href="book_tables.php"><button type="submit" class="btn btn-danger mb-3">Tambah</button></a>
+                        <a href="book_tables.php"><button type="submit" class="btn btn-danger mb-3">Kembali</button></a>
                 </div>
                 <!-- End of Topbar -->
                 <div class="card shadow mb-4">

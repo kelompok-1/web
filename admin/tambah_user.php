@@ -176,15 +176,15 @@ $sesName = $_SESSION['username'];
                             <form action="proses_input_user.php" method="POST">
                         <div class="mb-3">
                         <label class="form-label">Username</label>
-                        <input class="form-control" type="text" name="txt_username">
+                        <input class="form-control" type="text" name="txt_username" required>
                         </div>
                         <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input class="form-control" type="email" name="txt_email">
+                        <input class="form-control" type="email" name="txt_email" required>
                         </div>
                         <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input class="form-control" pattern=".{6,}" type="password" name="txt_pass">
+                        <input class="form-control" pattern=".{6,}" type="password" name="txt_pass" required>
                         </div>
                         <div class="col-auto">
                         <button type="submit" class="btn btn-primary mb-3" name="input">Tambah</button>

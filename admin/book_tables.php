@@ -177,7 +177,6 @@ $sesName = $_SESSION['username'];
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>No</th>
                                             <th>Kode Buku</th>
                                             <th>Nama Buku</th>
                                             <th>Nama Penulis</th>
@@ -190,7 +189,6 @@ $sesName = $_SESSION['username'];
                                     </thead>
                                     <tfoot>
                                         <tr>
-                                            <th>No</th>
                                             <th>Kode Buku</th>
                                             <th>Nama Buku</th>
                                             <th>Nama Penulis</th>
@@ -204,7 +202,6 @@ $sesName = $_SESSION['username'];
                                     <?php 
                                     $query = "SELECT * FROM buku";
                                     $result = mysqli_query($koneksi,$query);
-                                    $no = 1;
                                     while($row = $row = mysqli_fetch_array($result)){
                                     $kodeBuku = $row['kode_buku'];
                                     $namaBuku = $row['nama_buku'];
@@ -216,7 +213,6 @@ $sesName = $_SESSION['username'];
                                     ?>
                                     <tbody>
                                         <tr>
-                                        <td><?php echo $no; ?></td>
                                             <td><?php echo $kodeBuku; ?></td>
                                             <td><?php echo $namaBuku; ?></td>
                                             <td><?php echo $namaPen; ?></td>
@@ -231,7 +227,6 @@ $sesName = $_SESSION['username'];
                                         </tr>
                                     </tbody>
                                     <?php
-                                    $no++;
                                     }
                                     ?>
                                 </table>
