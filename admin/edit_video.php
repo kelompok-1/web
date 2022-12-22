@@ -33,7 +33,7 @@ $sesName = $_SESSION['username'];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Skoolen | Data Buku</title>
+    <title>Skoolen | Data Video</title>
     <link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
 
     <!-- Custom fonts for this template-->
@@ -94,7 +94,12 @@ $sesName = $_SESSION['username'];
                     <i class="fas fa-fw fa-video"></i>
                     <span>Data Video</span></a>
             </li>
-
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="audio_tables.php">
+                    <i class="fas fa-fw fa-music"></i>
+                    <span>Data Audio</span></a>
+            </li>
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

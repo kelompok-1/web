@@ -8,18 +8,15 @@ if(!isset($_SESSION['username'])){
 }
 if (isset($_POST["update"])) {
 
-    $kodeBuku = $_POST['kode_buku'];
-    $namaBuku = $_POST['nama_buku'];
-    $namaPen = $_POST['nama_penulis'];
-    $desK = $_POST['deskripsi_buku'];
-    $jumHal = $_POST['jumlah_halaman'];
-    $gaM = $_POST['gambar'];
-    $linkPdf = $_POST['link_pdf'];
+    $namaAu = $_POST['nama_audio'];
+    $namaAut = $_POST['nama_author'];
+    $gam = $_POST['gambar'];
+    $linkAu = $_POST['link_audio'];
     
     // update data ke database
-    mysqli_query($koneksi, "UPDATE buku SET kode_buku='$kodeBuku', nama_buku='$namaBuku' , nama_penulis='$namaPen' , deskripsi_buku='$desK' , 
-    jumlah_halaman='$jumHal' , gambar='$gaM' , link_pdf='$linkPdf' WHERE kode_buku='$kodeBuku'");
-    header("location:book_tables.php");
+    mysqli_query($koneksi, "UPDATE audio SET nama_audio='$namaAu', nama_author='$namaAut' , gambar='$gam' , link_audio='$linkAu' 
+    WHERE nama_audio='$namaAu'");
+    header("location:audio_tables.php");
     } 
 $sesName = $_SESSION['username'];
 ?>
@@ -34,7 +31,7 @@ $sesName = $_SESSION['username'];
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Skoolen | Data Buku</title>
+    <title>Skoolen | Data Audio</title>
     <link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
 
     <!-- Custom fonts for this template-->
@@ -84,7 +81,7 @@ $sesName = $_SESSION['username'];
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data User</span></a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                 <a class="nav-link" href="book_tables.php">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Data Buku</span></a>
@@ -96,11 +93,12 @@ $sesName = $_SESSION['username'];
                     <span>Data Video</span></a>
             </li>
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="audio_tables.php">
                     <i class="fas fa-fw fa-music"></i>
                     <span>Data Audio</span></a>
             </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
@@ -176,7 +174,7 @@ $sesName = $_SESSION['username'];
 
                 </nav>
                 <div class="col-auto">
-                        <a href="book_tables.php"><button type="submit" class="btn btn-danger mb-3">Kembali</button></a>
+                        <a href="audio_tables.php"><button type="submit" class="btn btn-danger mb-3">Kembali</button></a>
                 </div>
                 <!-- End of Topbar -->
                 <div class="card shadow mb-4">
@@ -186,38 +184,26 @@ $sesName = $_SESSION['username'];
                         <div class="card-body">
                         <?php
                         include '../koneksi.php';
-					    $buku = $_GET['kode_buku'];
-	                    $data = mysqli_query($koneksi,"SELECT * FROM buku WHERE kode_buku='$buku'");
+					    $au = $_GET['nama_audio'];
+	                    $data = mysqli_query($koneksi,"SELECT * FROM audio WHERE nama_audio='$au'");
 	                    while($row = mysqli_fetch_array($data)){
 		                ?>
-                            <form action="edit_buku.php" method="POST">
-                        <div class="mb-3">
-                        <label class="form-label">Kode Buku</label>
-                        <input class="form-control" type="text" name="kode_buku" value="<?php echo $row['kode_buku']; ?>" readonly>
+                            <form action="edit_audio.php" method="POST">
+                            <div class="mb-3">
+                        <label class="form-label">Nama Audio</label>
+                        <input class="form-control" type="text" name="nama_audio" value="<?php echo $row['nama_audio']; ?>" readonly>
                         </div>
                         <div class="mb-3">
-                        <label class="form-label">Nama Buku</label>
-                        <input class="form-control" type="text" name="nama_buku" value="<?php echo $row['nama_buku']; ?>">
-                        </div>
-                        <div class="mb-3">
-                        <label class="form-label">Nama Penulis</label>
-                        <input class="form-control" type="text" name="nama_penulis" value="<?php echo $row['nama_penulis']; ?>">
-                        </div>
-                        <div class="mb-3">
-                        <label class="form-label">Deskripsi Buku</label>
-                        <input class="form-control" type="text" name="deskripsi_buku" value="<?php echo $row['deskripsi_buku']; ?>">
-                        </div>
-                        <div class="mb-3">
-                        <label class="form-label">Jumlah Halaman</label>
-                        <input class="form-control" type="text" name="jumlah_halaman" value="<?php echo $row['jumlah_halaman']; ?>">
+                        <label class="form-label">Nama Author</label>
+                        <input class="form-control" type="text" name="nama_author" value="<?php echo $row['nama_author']; ?>">
                         </div>
                         <div class="mb-3">
                         <label class="form-label">Gambar</label>
                         <input class="form-control" type="text" name="gambar" value="<?php echo $row['gambar']; ?>">
                         </div>
                         <div class="mb-3">
-                        <label class="form-label">Link PDF</label>
-                        <input class="form-control" type="text" name="link_pdf" value="<?php echo $row['link_pdf']; ?>">
+                        <label class="form-label">Link Audio</label>
+                        <input class="form-control" type="text" name="link_audio" value="<?php echo $row['link_audio']; ?>">
                         </div>
                         <div class="col-auto">
                         <button type="submit" class="btn btn-primary mb-3" name="update">Update</button>

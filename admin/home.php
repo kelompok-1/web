@@ -97,6 +97,12 @@ $jumlah_audio = mysqli_num_rows($data_audio);
                     <i class="fas fa-fw fa-video"></i>
                     <span>Data Video</span></a>
             </li>
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="audio_tables.php">
+                    <i class="fas fa-fw fa-music"></i>
+                    <span>Data Audio</span></a>
+            </li>
 
 
             <!-- Divider -->
