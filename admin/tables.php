@@ -74,20 +74,11 @@ $sesName = $_SESSION['username'];
                     <i class="fas fa-fw fa-book"></i>
                     <span>Data Buku</span></a>
             </li>
-                        <!-- Nav Item - Utilities Collapse Menu -->
-                        <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="video_tables.php">
                     <i class="fas fa-fw fa-video"></i>
-                    <span>Video</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="video_binggris.php">Kategori</a>
-                        <a class="collapse-item" href="video_matematika.php">Data Video</a>
-                    </div>
-                </div>
+                    <span>Data Video</span></a>
             </li>
 
             <!-- Divider -->
@@ -204,7 +195,7 @@ $sesName = $_SESSION['username'];
                                     ?>
                                     <tbody>
                                         <tr>
-                                        <td><?php echo $no; ?></td>
+                                            <td><?php echo $no; ?></td>
                                             <td><?php echo $userName; ?></td>
                                             <td><?php echo $userEmail; ?></td>
                                             <td><?php echo $password; ?></td>

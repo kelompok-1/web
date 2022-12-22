@@ -7,22 +7,6 @@ if(!isset($_SESSION['username'])){
     header('Location:../login.php');
 }
 $sesName = $_SESSION['username'];
-// mengambil data user
-$data_user = mysqli_query($koneksi,"SELECT * FROM pengguna WHERE level='2'");
-// mengambil data buku
-$data_buku = mysqli_query($koneksi,"SELECT * FROM buku");
-// mengambil data video
-$data_video = mysqli_query($koneksi,"SELECT * FROM video");
-// mengambil data audio
-$data_audio = mysqli_query($koneksi,"SELECT * FROM audio");
-// menghitung data user
-$jumlah_user = mysqli_num_rows($data_user);
-//menghitung data buku
-$jumlah_buku = mysqli_num_rows($data_buku);
-//menghitung data video
-$jumlah_video = mysqli_num_rows($data_video);
-//menghitung data audio
-$jumlah_audio = mysqli_num_rows($data_audio);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +19,7 @@ $jumlah_audio = mysqli_num_rows($data_audio);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Skoolen | Dashboard</title>
+    <title>Skoolen | Data Kategori Video</title>
     <link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
 
     <!-- Custom fonts for this template-->
@@ -69,7 +53,7 @@ $jumlah_audio = mysqli_num_rows($data_audio);
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="home.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -84,20 +68,18 @@ $jumlah_audio = mysqli_num_rows($data_audio);
                 <a class="nav-link" href="tables.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data User</span></a>
-            </li>
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                 <a class="nav-link" href="book_tables.php">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Data Buku</span></a>
             </li>
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="video_tables.php">
                     <i class="fas fa-fw fa-video"></i>
                     <span>Data Video</span></a>
             </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -173,95 +155,59 @@ $jumlah_audio = mysqli_num_rows($data_audio);
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Jumlah User</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_user; ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-user fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Jumlah Buku</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_buku; ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-book fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Jumlah Video</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_video; ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-video fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Jumlah Audio</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_audio; ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-music fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    </div>
+                <div class="col-auto">
+                        <a href="video_tables.php"><button type="submit" class="btn btn-danger mb-3">Kembali</button></a>
                 </div>
-                <!-- /.container-fluid -->
+                <!-- End of Topbar -->
+                <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Input Video</h6>
+                        </div>
+                        <div class="card-body">
+                        <form action="proses_input_video.php" method="POST">
+                        <div class="mb-3">
+                        <label class="form-label">No Urut</label>
+                        <input class="form-control" type="text" name="urutan" required>
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Nama Video</label>
+                        <input class="form-control" type="text" name="nama_video" required>
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Durasi</label>
+                        <input class="form-control" type="time" name="durasi" required>
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Link Video</label>
+                        <input class="form-control" type="text" name="link_video" required>
+                        </div>
+                        <div class="mb-3">
+                        <label for="nama_sub_kategori_video">Kategori</label>
+                        <br>
+                        <select name="nama_sub_kategori_video">
+                        <?php
+                        $query = mysqli_query($koneksi, "SELECT nama_sub_kategori_video FROM sub_kategori_video");
+                        while($row = $row = mysqli_fetch_array($query)){
+                        $namaKat = $row['nama_sub_kategori_video'];
+                        ?>
+                        <option><?= $namaKat;?></option>
+                        <?php
+                        }
+                        ?>  
+                        </select>
+                        </div>
+                        <div class="mb-3">
+                        <label class="form-label">Thumbnail</label>
+                        <input class="form-control" type="text" name="thumbnail" required>
+                        </div>
+                        <div class="col-auto">
+                        <button type="submit" class="btn btn-primary mb-3" name="input">Tambah</button>
+                        </div>
+                        </form>
+                        </div>
+                    </div>                
+            </div>
+            </div>	
             </div>
             <!-- End of Main Content -->
             <!-- Footer -->

@@ -23,7 +23,7 @@ if(isset($_POST['submit'])){
                 $_SESSION['username'] = $userVal;
                 header('Location:admin/home.php');
             }else{
-                setcookie("message","Maaf, Username Atau Password Salah",time()+1);
+                setcookie("message","Maaf, Password Salah",time()+1);
                 header('Location:login.php');
             }
         }else{

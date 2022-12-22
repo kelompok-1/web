@@ -89,20 +89,11 @@ $sesName = $_SESSION['username'];
                     <i class="fas fa-fw fa-book"></i>
                     <span>Data Buku</span></a>
             </li>
-            <!-- Nav Item - Utilities Collapse Menu -->
+            <!-- Nav Item - Tables -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
+                <a class="nav-link" href="video_tables.php">
                     <i class="fas fa-fw fa-video"></i>
-                    <span>Video</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="video_binggris.php">Kategori</a>
-                        <a class="collapse-item" href="video_matematika.php">Data Video</a>
-                    </div>
-                </div>
+                    <span>Data Video</span></a>
             </li>
 
             <!-- Divider -->
@@ -185,7 +176,7 @@ $sesName = $_SESSION['username'];
                 <!-- End of Topbar -->
                 <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Input Buku</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Update Buku</h6>
                         </div>
                         <div class="card-body">
                         <?php
@@ -197,7 +188,7 @@ $sesName = $_SESSION['username'];
                             <form action="edit_buku.php" method="POST">
                         <div class="mb-3">
                         <label class="form-label">Kode Buku</label>
-                        <input class="form-control" type="text" name="kode_buku" value="<?php echo $row['kode_buku']; ?>">
+                        <input class="form-control" type="text" name="kode_buku" value="<?php echo $row['kode_buku']; ?>" readonly>
                         </div>
                         <div class="mb-3">
                         <label class="form-label">Nama Buku</label>

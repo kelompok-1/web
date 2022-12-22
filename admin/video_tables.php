@@ -7,22 +7,6 @@ if(!isset($_SESSION['username'])){
     header('Location:../login.php');
 }
 $sesName = $_SESSION['username'];
-// mengambil data user
-$data_user = mysqli_query($koneksi,"SELECT * FROM pengguna WHERE level='2'");
-// mengambil data buku
-$data_buku = mysqli_query($koneksi,"SELECT * FROM buku");
-// mengambil data video
-$data_video = mysqli_query($koneksi,"SELECT * FROM video");
-// mengambil data audio
-$data_audio = mysqli_query($koneksi,"SELECT * FROM audio");
-// menghitung data user
-$jumlah_user = mysqli_num_rows($data_user);
-//menghitung data buku
-$jumlah_buku = mysqli_num_rows($data_buku);
-//menghitung data video
-$jumlah_video = mysqli_num_rows($data_video);
-//menghitung data audio
-$jumlah_audio = mysqli_num_rows($data_audio);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -35,7 +19,7 @@ $jumlah_audio = mysqli_num_rows($data_audio);
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Skoolen | Dashboard</title>
+    <title>Skoolen | Data Kategori Video</title>
     <link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
 
     <!-- Custom fonts for this template-->
@@ -69,7 +53,7 @@ $jumlah_audio = mysqli_num_rows($data_audio);
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="home.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -84,20 +68,18 @@ $jumlah_audio = mysqli_num_rows($data_audio);
                 <a class="nav-link" href="tables.php">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Data User</span></a>
-            </li>
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
                 <a class="nav-link" href="book_tables.php">
                     <i class="fas fa-fw fa-book"></i>
                     <span>Data Buku</span></a>
             </li>
             <!-- Nav Item - Tables -->
-            <li class="nav-item">
+            <li class="nav-item active">
                 <a class="nav-link" href="video_tables.php">
                     <i class="fas fa-fw fa-video"></i>
                     <span>Data Video</span></a>
             </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -173,95 +155,74 @@ $jumlah_audio = mysqli_num_rows($data_audio);
                     </ul>
 
                 </nav>
-                <!-- End of Topbar -->
-
-                <!-- Begin Page Content -->
-                <div class="container-fluid">
-
-                    <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-                    </div>
-
-                    <!-- Content Row -->
-                    <div class="row">
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-primary shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Jumlah User</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_user; ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-user fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Jumlah Buku</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_buku; ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-book fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Earnings (Monthly) Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-success shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Jumlah Video</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_video; ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-video fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Pending Requests Card Example -->
-                        <div class="col-xl-3 col-md-6 mb-4">
-                            <div class="card border-left-warning shadow h-100 py-2">
-                                <div class="card-body">
-                                    <div class="row no-gutters align-items-center">
-                                        <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Jumlah Audio</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $jumlah_audio; ?></div>
-                                        </div>
-                                        <div class="col-auto">
-                                            <i class="fas fa-music fa-2x text-gray-300"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                    </div>
+                <div class="col-auto">
+                        <a href="tambah_video.php"><button type="submit" class="btn btn-primary mb-3">Tambah</button></a>
                 </div>
-                <!-- /.container-fluid -->
+                <!-- DataTales Example -->
+                    <div class="card shadow mb-4">
+                        <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Data Video</h6>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Video</th>
+                                            <th>Durasi</th>
+                                            <th>Link Video</th>
+                                            <th>Kategori</th>
+                                            <th>Thumbnail</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tfoot>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama Video</th>
+                                            <th>Durasi</th>
+                                            <th>Link Video</th>
+                                            <th>Kategori</th>
+                                            <th>Thumbnail</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </tfoot>
+                                    <?php 
+                                    $query = "SELECT * FROM video";
+                                    $result = mysqli_query($koneksi,$query);
+                                    $no = 1;
+                                    while($row = $row = mysqli_fetch_array($result)){
+                                    $namaVid = $row['nama_video'];
+                                    $durasi = $row['durasi'];
+                                    $linkVid = $row['link_video'];
+                                    $Kat = $row['nama_sub_kategori_video'];
+                                    $thubN = $row['thumbnail'];
+                                    ?>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $no; ?></td>
+                                            <td><?php echo $namaVid; ?></td>
+                                            <td><?php echo $durasi; ?></td>
+                                            <td><?php echo $linkVid; ?></td>
+                                            <td><?php echo $Kat; ?></td>
+                                            <td><?php echo $thubN; ?></td>
+                                            <td>
+                                                <a href="edit_video.php?nama_video=<?=$row['nama_video']; ?>"><input class="btn btn-success btn-xs"  type="button" value="Edit"></a>
+                                                <a href="../delete_video.php?nama_video=<?=$row['nama_video']; ?>"><input class="btn btn-danger btn-xs"  type="button" value="Delete"></a>
+                                            </td> 
+                                        </tr>
+                                    </tbody>
+                                    <?php
+                                    $no++;
+                                    }
+                                    ?>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+            </div>	
             </div>
             <!-- End of Main Content -->
             <!-- Footer -->
