@@ -17,7 +17,7 @@ if (isset($_POST["update"])) {
     
     // update data ke database
     mysqli_query($koneksi, "UPDATE video SET urutan='$urut', nama_video='$namaVid' , durasi='$durasi' , link_video='$linkVid' , 
-    nama_sub_kategori_video='$Kat' , thumbnail='$thub' WHERE nama_video='$namaVid'");
+    nama_sub_kategori_video='$Kat' , thumbnail='$thubN' WHERE nama_video='$namaVid'");
     header("location:video_tables.php");
     } 
 $sesName = $_SESSION['username'];
@@ -187,9 +187,9 @@ $sesName = $_SESSION['username'];
                         <br>
                         <select name="nama_sub_kategori_video">
                         <?php
-                        $query = mysqli_query($koneksi, "SELECT nama_sub_kategori_video FROM sub_kategori_video");
-                        while($row = $row = mysqli_fetch_array($query)){
-                        $namaKat = $row['nama_sub_kategori_video'];
+                        $query2 = mysqli_query($koneksi, "SELECT nama_sub_kategori_video FROM sub_kategori_video");
+                        while($row2 = $row2 = mysqli_fetch_array($query2)){
+                        $namaKat = $row2['nama_sub_kategori_video'];
                         ?>
                         <option><?= $namaKat;?></option>
                         <?php

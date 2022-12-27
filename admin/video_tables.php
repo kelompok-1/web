@@ -185,9 +185,9 @@ $sesName = $_SESSION['username'];
                                             <td><?php echo $no; ?></td>
                                             <td><?php echo $namaVid; ?></td>
                                             <td><?php echo $durasi; ?></td>
-                                            <td><?php echo $linkVid; ?></td>
+                                            <td><a href="<?php echo $linkVid; ?>"><?php echo $linkVid; ?></a></td>
                                             <td><?php echo $Kat; ?></td>
-                                            <td><?php echo $thubN; ?></td>
+                                            <td><a href="<?php echo $thubN; ?>"><?php echo $thubN; ?></a></td>
                                             <td>
                                                 <a href="edit_video.php?nama_video=<?=$row['nama_video']; ?>"><input class="btn btn-success btn-xs"  type="button" value="Edit"></a>
                                                 <a href="../delete_video.php?nama_video=<?=$row['nama_video']; ?>"><input class="btn btn-danger btn-xs"  type="button" value="Delete"></a>

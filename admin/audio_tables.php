@@ -183,8 +183,8 @@ $sesName = $_SESSION['username'];
                                             <td><?php echo $no; ?></td>
                                             <td><?php echo $namaAu; ?></td>
                                             <td><?php echo $namaAut; ?></td>
-                                            <td><?php echo $gam; ?></td>
-                                            <td><?php echo $linkAu; ?></td>
+                                            <td><a href="<?php echo $gam; ?>"><?php echo $gam; ?></a></td>
+                                            <td><a href="<?php echo $linkAu; ?>"><?php echo $linkAu; ?></a></td>
                                             <td>
                                                 <a href="edit_audio.php?nama_audio=<?=$row['nama_audio']; ?>"><input class="btn btn-success btn-xs"  type="button" value="Edit"></a>
                                                 <a href="../delete_audio.php?nama_audio=<?=$row['nama_audio']; ?>"><input class="btn btn-danger btn-xs"  type="button" value="Delete"></a>

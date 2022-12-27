@@ -191,8 +191,8 @@ $sesName = $_SESSION['username'];
                                             <td><?php echo $namaPen; ?></td>
                                             <td><?php echo $desK; ?></td>
                                             <td><?php echo $jumHal; ?></td>
-                                            <td><?php echo $gaM; ?></td>
-                                            <td><?php echo $linkPdf; ?></td>
+                                            <td><a href="<?php echo $gaM; ?>"><?php echo $gaM; ?></a></td>
+                                            <td><a href="<?php echo $linkPdf; ?>"><?php echo $linkPdf; ?></a></td>
                                             <td>
                                                 <a href="edit_buku.php?kode_buku=<?=$row['kode_buku']; ?>"><input class="btn btn-success btn-xs"  type="button" value="Edit"></a>
                                                 <a href="../delete_book.php?kode_buku=<?=$row['kode_buku']; ?>"><input class="btn btn-danger btn-xs"  type="button" value="Delete"></a>

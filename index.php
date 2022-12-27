@@ -78,7 +78,7 @@
     </div>
 <!-- Team Start -->
 <div class="container-xxl py-5">
-        <div class="container">
+        <div class="container text-center">
             <div class="text-center">
                 <div class="bg-primary mb-3 mx-auto" style="width: 60px; height: 2px;"></div>
                 <h1 class="display-5 mb-5">Team Members</h1>
@@ -109,7 +109,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="team-item">
                         <div class="overflow-hidden position-relative">
-                            <img class="img-fluid" src="img/team-3.jpg" alt="">
+                            <img class="img-fluid" src="img/team5.jpg" alt="">
                         </div>
                         <div class="text-center p-4">
                             <h5 class="mb-0">Kristian Fransicus Don Gua</h5>
@@ -120,7 +120,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="team-item">
                         <div class="overflow-hidden position-relative">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
+                            <img class="img-fluid" src="img/team4.jpeg" alt="" >
                         </div>
                         <div class="text-center p-4">
                             <h5 class="mb-0">Aiko Mawardi</h5>
@@ -131,7 +131,7 @@
                 <div class="col-lg-3 col-md-6">
                     <div class="team-item">
                         <div class="overflow-hidden position-relative">
-                            <img class="img-fluid" src="img/team-4.jpg" alt="">
+                            <img class="img-fluid" src="img/team3.jpeg" alt="">
                         </div>
                         <div class="text-center p-4">
                             <h5 class="mb-0">Siti Hannaniyah Sucipto</h5>
