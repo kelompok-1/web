@@ -95,9 +95,10 @@ if(isset($_POST['submit'])){
 							LOGIN
 						</button>
 					</div>
+					<br>
+					<a href="index.php" class="btn btn-dark py-md-2 px-md-4">Kembali</a>
 				</form>
 				<div class="login100-more" style="background-image: url('images/1.png');">
-				<a href="index.php" class="btn btn-dark py-md-2 px-md-4">←</a>
 				</div>
 			</div>
 		</div>
