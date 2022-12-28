@@ -150,7 +150,7 @@ $sesName = $_SESSION['username'];
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Video</th>
+                                            <th>Judul Video</th>
                                             <th>Durasi</th>
                                             <th>Link Video</th>
                                             <th>Kategori</th>
@@ -161,7 +161,7 @@ $sesName = $_SESSION['username'];
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Video</th>
+                                            <th>Judul Video</th>
                                             <th>Durasi</th>
                                             <th>Link Video</th>
                                             <th>Kategori</th>

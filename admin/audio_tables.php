@@ -143,7 +143,7 @@ $sesName = $_SESSION['username'];
                 <!-- DataTales Example -->
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Data Video</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Data Audio</h6>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -151,7 +151,7 @@ $sesName = $_SESSION['username'];
                                     <thead>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Audio</th>
+                                            <th>Judul Audio</th>
                                             <th>Nama Author</th>
                                             <th>Gambar</th>
                                             <th>Link Audio</th>
@@ -161,7 +161,7 @@ $sesName = $_SESSION['username'];
                                     <tfoot>
                                         <tr>
                                             <th>No</th>
-                                            <th>Nama Audio</th>
+                                            <th>Judul Audio</th>
                                             <th>Nama Author</th>
                                             <th>Gambar</th>
                                             <th>Link Audio</th>

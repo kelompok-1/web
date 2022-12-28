@@ -143,7 +143,7 @@ $sesName = $_SESSION['username'];
                 <!-- End of Topbar -->
                 <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Input User</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Input Audio</h6>
                         </div>
                         <div class="card-body">
                             <form action="proses_input_audio.php" method="POST">

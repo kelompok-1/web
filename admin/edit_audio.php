@@ -155,7 +155,7 @@ $sesName = $_SESSION['username'];
                 <!-- End of Topbar -->
                 <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">Update Buku</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Update Audio</h6>
                         </div>
                         <div class="card-body">
                         <?php
