@@ -7,7 +7,7 @@ if(isset($_POST['submit'])){
     $pass = $_POST['txt_pass'];
 
     if(!empty(trim($user)) && !empty(trim($pass))){
-        $query = "SELECT * FROM pengguna WHERE username='$user'";
+        $query = "SELECT * FROM pengguna WHERE username='$user' AND level='1'";
         $result = mysqli_query($koneksi,$query);
         $num = mysqli_num_rows($result);
 
@@ -15,6 +15,7 @@ if(isset($_POST['submit'])){
             $userVal = $row['username'];
 			$emailVal = $row['email'];
             $passVal = $row['password'];
+			$level = $row['level'];
         }
 
         if($num != 0){
@@ -27,7 +28,7 @@ if(isset($_POST['submit'])){
                 header('Location:login.php');
             }
         }else{
-            setcookie("message","Akun Belum Terdaftar",time()+1);
+            setcookie("message","Hanya Admin yang bisa login",time()+1);
             header('Location:login.php');
         }
     }else{
